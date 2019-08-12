@@ -1,0 +1,25 @@
+{
+	"forge_marker": 1,
+	"defaults": 
+	{
+		"model": "questformillions:pedestal",
+		"transform": "forge:default-block"
+	},
+
+	"variants": 
+	{
+		"normal": 
+		[
+			{
+				
+			}
+		],
+
+		"inventory": 
+		[
+			{
+				
+			}
+		]
+	}
+}

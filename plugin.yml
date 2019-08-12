@@ -1,0 +1,8 @@
+name: Template
+main: net.thedudemc.template.Template
+version: 1.0
+api-version: 1.13
+commands:
+  dude:
+    description: Dude.
+    usage: /dude

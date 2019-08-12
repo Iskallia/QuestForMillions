@@ -1,0 +1,51 @@
+{
+	"forge_marker": 1,
+	"defaults": 
+	{
+		"model": "questformillions:treasure",
+		"transform": "forge:default-block"
+	},
+
+	"variants": 
+	{
+		"layers=1": 
+		{
+			"model": "questformillions:treasure_height2"
+		},
+
+		"layers=2": 
+		{
+			"model": "questformillions:treasure_height4"
+		},
+
+		"layers=3": 
+		{
+			"model": "questformillions:treasure_height6"
+		},
+
+		"layers=4": 
+		{
+			"model": "questformillions:treasure_height8"
+		},
+
+		"layers=5": 
+		{
+			"model": "questformillions:treasure_height10"
+		},
+
+		"layers=6": 
+		{
+			"model": "questformillions:treasure_height12"
+		},
+
+		"layers=7": 
+		{
+			"model": "questformillions:treasure_height14"
+		},
+
+		"layers=8": 
+		{
+			"model": "questformillions:treasure"
+		}
+	}
+}
