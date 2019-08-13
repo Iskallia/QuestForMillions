@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "0.1"
+version = "0.0.2"
 group = "net.thedudemc.questformillions" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "questformillions"
 
@@ -26,8 +26,16 @@ minecraft {
     mappings = "stable_39"
 }
 
-dependencies {
+repositories {
+	maven { url "https://maven.latmod.com/" }
+	maven {
+        name = "JEI repo"
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+}
 
+dependencies {
+	deobfCompile "com.feed_the_beast.mods:FTBLib:${ftblib_version}"
 }
 
 processResources {

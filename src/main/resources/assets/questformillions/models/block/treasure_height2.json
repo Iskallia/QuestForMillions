@@ -1,0 +1,6 @@
+{   "parent": "modid:block/thin_layer1",
+    "textures": {
+        "particle": "modid:blocks/treasure",
+        "texture": "modid:blocks/treasure"
+    }
+}
