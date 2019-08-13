@@ -2,7 +2,10 @@ package net.thedudemc.questformillions.client;
 
 import javax.annotation.Nullable;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +22,8 @@ import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 @Mod.EventBusSubscriber(modid = QuestForMillions.MODID, value = Side.CLIENT)
 public class QFMClient {
+
+	public static KeyBinding KEY_TOGGLE_OVERLAY = new KeyBinding("key.questformillions.desc", Keyboard.KEY_F8, "key.questformillions.category");
 
 	@SubscribeEvent
 	static void onRegisterModels(final ModelRegistryEvent context) {
@@ -47,5 +52,10 @@ public class QFMClient {
 
 	public static void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePedestal.class, new RenderPedestal());
+	}
+
+	public static void registerKeybinds() {
+
+		ClientRegistry.registerKeyBinding(KEY_TOGGLE_OVERLAY);
 	}
 }
