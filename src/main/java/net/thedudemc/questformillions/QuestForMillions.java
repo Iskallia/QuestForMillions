@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import net.thedudemc.questformillions.client.QFMClient;
 import net.thedudemc.questformillions.client.gui.GuiRenderer;
 import net.thedudemc.questformillions.common.network.TotalItemsPacket;
 import net.thedudemc.questformillions.common.network.TotalItemsPacketHandler;
@@ -29,6 +30,7 @@ public class QuestForMillions {
 		Config.init(event.getSuggestedConfigurationFile());
 		PACKET.registerMessage(TotalItemsPacketHandler.class, TotalItemsPacket.class, 0, Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new GuiRenderer());
+
 	}
 
 	@EventHandler
@@ -38,7 +40,9 @@ public class QuestForMillions {
 
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event) {
-
+		if (event.getSide() == Side.CLIENT) {
+			QFMClient.registerRenderers();
+		}
 	}
 
 	public static final String getTranslationKey(String name) {

@@ -9,39 +9,339 @@
 	"variants": 
 	{
 		"layers=1": 
-		{
-			"model": "questformillions:treasure_height2"
-		},
+		[
+			{
+				"model": "questformillions:treasure_height2_0",
+				"weight": 60
+			},
+
+			{
+				"model": "questformillions:treasure_height2_1",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height2_2",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height2_3",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height2_4",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height2_5",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height2_6",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height2_7",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height2_8",
+				"weight": 5
+			}
+		],
 
 		"layers=2": 
-		{
-			"model": "questformillions:treasure_height4"
-		},
+		[
+			{
+				"model": "questformillions:treasure_height4_0",
+				"weight": 60
+			},
+
+			{
+				"model": "questformillions:treasure_height4_1",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height4_2",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height4_3",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height4_4",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height4_5",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height4_6",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height4_7",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height4_8",
+				"weight": 5
+			}
+		],
 
 		"layers=3": 
-		{
-			"model": "questformillions:treasure_height6"
-		},
+		[
+			{
+				"model": "questformillions:treasure_height6_0",
+				"weight": 60
+			},
 
+			{
+				"model": "questformillions:treasure_height6_1",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height6_2",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height6_3",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height6_4",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height6_5",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height6_6",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height6_7",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height6_8",
+				"weight": 5
+			}
+		],
 		"layers=4": 
-		{
-			"model": "questformillions:treasure_height8"
-		},
+		[
+			{
+				"model": "questformillions:treasure_height8_0",
+				"weight": 60
+			},
+
+			{
+				"model": "questformillions:treasure_height8_1",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height8_2",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height8_3",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height8_4",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height8_5",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height8_6",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height8_7",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height8_8",
+				"weight": 5
+			}
+		],
 
 		"layers=5": 
-		{
-			"model": "questformillions:treasure_height10"
-		},
+		[
+			{
+				"model": "questformillions:treasure_height10_0",
+				"weight": 60
+			},
+
+			{
+				"model": "questformillions:treasure_height10_1",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height10_2",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height10_3",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height10_4",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height10_5",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height10_6",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height10_7",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height10_8",
+				"weight": 5
+			}
+		],
 
 		"layers=6": 
-		{
-			"model": "questformillions:treasure_height12"
-		},
+		[
+			{
+				"model": "questformillions:treasure_height12_0",
+				"weight": 60
+			},
+
+			{
+				"model": "questformillions:treasure_height12_1",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height12_2",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height12_3",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height12_4",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height12_5",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height12_6",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height12_7",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height12_8",
+				"weight": 5
+			}
+		],
 
 		"layers=7": 
-		{
-			"model": "questformillions:treasure_height14"
-		},
+		[
+			{
+				"model": "questformillions:treasure_height14_0",
+				"weight": 60
+			},
+
+			{
+				"model": "questformillions:treasure_height14_1",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height14_2",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height14_3",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height14_4",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height14_5",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height14_6",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height14_7",
+				"weight": 5
+			},
+
+			{
+				"model": "questformillions:treasure_height14_8",
+				"weight": 5
+			}
+		],
 
 		"layers=8": 
 		{

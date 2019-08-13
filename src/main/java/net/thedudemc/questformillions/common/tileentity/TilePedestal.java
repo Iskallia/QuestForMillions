@@ -2,8 +2,12 @@ package net.thedudemc.questformillions.common.tileentity;
 
 import java.util.List;
 
+import com.feed_the_beast.ftblib.lib.data.FTBLibAPI;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,16 +27,32 @@ import net.thedudemc.questformillions.common.util.Config;
 public class TilePedestal extends TileEntity implements ITickable {
 
 	int totalItems = 0;
+	String owningTeam = "";
 
 	static final int SIZE = 1;
 	static final int MAX = 1000000;
 
 	@Override
+	public boolean hasFastRenderer() {
+		return true;
+	}
+
+	@Override
 	public void update() {
+		// if we are on the client, do nothing.
 		if (getWorld().isRemote)
 			return;
-		if (getWorld().getTotalWorldTime() % 20 == 0)
-			QuestForMillions.PACKET.sendToAll(new TotalItemsPacket(getTotalItems()));
+
+		// once per second, update the necessary clients of their total diamonds.
+		if (getWorld().getTotalWorldTime() % 20 == 0) {
+			for (EntityPlayer p : this.getWorld().playerEntities) {
+				EntityPlayerMP player = (EntityPlayerMP) p;
+				if (FTBLibAPI.isPlayerInTeam(p.getUniqueID(), this.getOwningTeam())) {
+					QuestForMillions.PACKET.sendTo(new TotalItemsPacket(getTotalItems()), player);
+				}
+			}
+			// TODO: send only to specific team, dependant on who owns the pedestal.
+		}
 
 		double x = this.getPos().getX() + 0.5D;
 		double y = this.getPos().getY() + 2D;
@@ -53,11 +73,12 @@ public class TilePedestal extends TileEntity implements ITickable {
 		}
 		collectItems();
 	}
-//ugh
+
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("items", itemHandler.serializeNBT());
 		compound.setInteger("totalItems", getTotalItems());
+		compound.setString("owningTeam", getOwningTeam());
 		return super.writeToNBT(compound);
 	}
 
@@ -68,7 +89,10 @@ public class TilePedestal extends TileEntity implements ITickable {
 			itemHandler.deserializeNBT((NBTTagCompound) compound.getTag("items"));
 		}
 		if (compound.hasKey("totalItems")) {
-			setTotalItems(compound.getInteger("totalItems"));
+			this.setTotalItems(compound.getInteger("totalItems"));
+		}
+		if (compound.hasKey("owningTeam")) {
+			this.setOwningTeam(compound.getString("owningTeam"));
 		}
 	}
 
@@ -173,6 +197,14 @@ public class TilePedestal extends TileEntity implements ITickable {
 
 	public void setTotalItems(int totalItems) {
 		this.totalItems = totalItems;
+	}
+
+	public String getOwningTeam() {
+		return owningTeam;
+	}
+
+	public void setOwningTeam(String owningTeam) {
+		this.owningTeam = owningTeam;
 	}
 
 	public void addToTotalItems(int amount) {

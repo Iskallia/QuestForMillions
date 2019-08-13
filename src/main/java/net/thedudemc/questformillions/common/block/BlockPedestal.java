@@ -2,6 +2,8 @@ package net.thedudemc.questformillions.common.block;
 
 import java.util.Random;
 
+import com.feed_the_beast.ftblib.lib.data.FTBLibAPI;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -20,6 +22,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -81,6 +84,7 @@ public class BlockPedestal extends Block {
 			ItemStack drop = new ItemStack(QFMBlocks.PEDESTAL);
 			NBTTagCompound compound = new NBTTagCompound();
 			compound.setInteger("totalItems", pedestal.getTotalItems());
+			compound.setString("owningTeam", pedestal.getOwningTeam());
 			drop.setTagCompound(compound);
 			drops.add(drop);
 		}
@@ -110,6 +114,17 @@ public class BlockPedestal extends Block {
 			NBTTagCompound nbt = stack.getTagCompound();
 			if (nbt.hasKey("totalItems")) {
 				pedestal.setTotalItems(nbt.getInteger("totalItems"));
+			}
+			if (nbt.hasKey("owningTeam")) {
+				pedestal.setOwningTeam(nbt.getString("owningTeam"));
+			}
+		} else {
+			String team = FTBLibAPI.getTeam(placer.getUniqueID());
+			if (!team.isEmpty()) {
+				pedestal.setOwningTeam(team);
+			} else {
+				placer.sendMessage(new TextComponentString("You may not place a pedestal until you have joined a team!"));
+				return;
 			}
 		}
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);

@@ -8,11 +8,14 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.thedudemc.questformillions.QuestForMillions;
+import net.thedudemc.questformillions.client.render.RenderPedestal;
 import net.thedudemc.questformillions.common.init.QFMBlocks;
+import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 @Mod.EventBusSubscriber(modid = QuestForMillions.MODID, value = Side.CLIENT)
 public class QFMClient {
@@ -40,5 +43,9 @@ public class QFMClient {
 		}
 
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(name, variant));
+	}
+
+	public static void registerRenderers() {
+		ClientRegistry.bindTileEntitySpecialRenderer(TilePedestal.class, new RenderPedestal());
 	}
 }
