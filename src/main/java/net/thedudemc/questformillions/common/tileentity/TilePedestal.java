@@ -17,10 +17,12 @@ import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.thedudemc.questformillions.QuestForMillions;
+import net.thedudemc.questformillions.common.init.QFMItems;
 import net.thedudemc.questformillions.common.network.TotalItemsPacket;
 import net.thedudemc.questformillions.common.util.Config;
 
@@ -114,12 +116,20 @@ public class TilePedestal extends TileEntity implements ITickable {
 					return stack;
 				}
 			} else {
+				ItemStack toReturn = stack.copy();
 				if (this.getStackInSlot(slot).getCount() <= 0) {
 					this.setStackInSlot(slot, stack);
+					toReturn.setCount(toReturn.getCount() - 1);
 				}
 				pedestal.addToTotalItems(stack.getCount());
+				World world = pedestal.world;
+				double d0 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+				double d1 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+				double d2 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+				EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, new ItemStack(QFMItems.TREASURE, stack.getCount()));
+				pedestal.world.spawnEntity(treasure);
 				pedestal.markDirty();
-				return stack;
+				return toReturn;
 			}
 		}
 
@@ -155,7 +165,7 @@ public class TilePedestal extends TileEntity implements ITickable {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing == EnumFacing.DOWN) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing == EnumFacing.UP) {
 			return true;
 		}
 		return super.hasCapability(capability, facing);
@@ -163,7 +173,7 @@ public class TilePedestal extends TileEntity implements ITickable {
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing == EnumFacing.DOWN) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing == EnumFacing.UP) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemHandler);
 		}
 		return super.getCapability(capability, facing);

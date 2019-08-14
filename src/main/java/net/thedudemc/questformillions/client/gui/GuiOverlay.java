@@ -15,10 +15,16 @@ public class GuiOverlay extends Gui {
 	int centerY = 0;
 	private Minecraft mc;
 	int totalItems = 0;
+	boolean isNumberVisible;
 
-	public GuiOverlay(int totalItems) {
+	public GuiOverlay(int totalItems, boolean isNumberVisible) {
 		this.totalItems = totalItems;
+		this.isNumberVisible = isNumberVisible;
 
+		drawBar();
+	}
+
+	private void drawBar() {
 		if (this.getTotalItems() > 0) {
 			this.mc = Minecraft.getMinecraft();
 			this.mc.getTextureManager().bindTexture(new ResourceLocation(QuestForMillions.MODID, "textures/gui/main.png"));
@@ -36,8 +42,10 @@ public class GuiOverlay extends Gui {
 			drawTexturedModalRect(startX + 18 + 3, startY, 0, 22, (int) ((((float) 176) * ((float) this.totalItems / 1000000f))), 16);
 			// draw diamond icon
 			this.mc.getRenderItem().renderItemIntoGUI(new ItemStack(Items.DIAMOND), 10, 10);
-			drawString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 78, startY + 5, 0x000000);
-			drawString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 78, startY + 4, 0xFFFFFF);
+			if (isNumberVisible) {
+				drawString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 78, startY + 5, 0x000000);
+				drawString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 78, startY + 4, 0xFFFFFF);
+			}
 		}
 	}
 

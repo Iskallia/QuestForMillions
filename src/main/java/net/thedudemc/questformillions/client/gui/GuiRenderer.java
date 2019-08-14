@@ -11,6 +11,7 @@ public class GuiRenderer {
 	public static GuiRenderer instance;
 	int totalItems = 0;
 	boolean isOverlayEnabled = true;
+	boolean isNumberVisible = true;
 
 	public GuiRenderer() {
 		instance = this;
@@ -20,7 +21,7 @@ public class GuiRenderer {
 	public void onRender(RenderGameOverlayEvent.Pre event) {
 		if (isOverlayEnabled) {
 			if (event.getType() == ElementType.ALL) {
-				new GuiOverlay(getTotalItems());
+				new GuiOverlay(getTotalItems(), isNumberVisible);
 			}
 		}
 	}
@@ -28,12 +29,18 @@ public class GuiRenderer {
 	@SubscribeEvent
 	public void onClientTick(ClientTickEvent event) {
 		if (QFMClient.KEY_TOGGLE_OVERLAY.isPressed()) {
-			if (isOverlayEnabled) {
+			if (isOverlayEnabled && isNumberVisible) {
 				isOverlayEnabled = false;
-			} else {
+				isNumberVisible = false;
+			} else if (isOverlayEnabled && !isNumberVisible) {
+				isNumberVisible = true;
+			} else if (!isOverlayEnabled && !isNumberVisible) {
 				isOverlayEnabled = true;
 			}
+			System.out.println("Overlay: " + isOverlayEnabled);
+			System.out.println("Number: " + isNumberVisible);
 		}
+
 	}
 
 	public int getTotalItems() {

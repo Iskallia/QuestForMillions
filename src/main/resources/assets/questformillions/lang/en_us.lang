@@ -2,7 +2,8 @@
 item.template.test_item.name=Test Item
 
 //Blocks
-tile.skytrophies.pedestal.name=Pedestal
+tile.questformillions.pedestal.name=Pedestal
+tile.questformillions.treasure.name=Treasure
 
 
 
