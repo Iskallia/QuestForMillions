@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.thedudemc.questformillions.QuestForMillions;
-import net.thedudemc.questformillions.common.item.ItemBlockBase;
+import net.thedudemc.questformillions.common.item.ItemPedestal;
 import net.thedudemc.questformillions.common.item.ItemTreasure;
 
 @ObjectHolder(QuestForMillions.MODID)
@@ -25,7 +25,7 @@ public class QFMItems {
 		// registerItem(registry, "test_item", new ItemTest());
 
 		// register block items
-		registerItem(registry, "pedestal", new ItemBlockBase(QFMBlocks.PEDESTAL));
+		registerItem(registry, "pedestal", new ItemPedestal(QFMBlocks.PEDESTAL));
 		registerItem(registry, "treasure", new ItemTreasure(QFMBlocks.TREASURE));
 
 	}

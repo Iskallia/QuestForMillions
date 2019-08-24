@@ -38,5 +38,6 @@ public class RenderPedestal extends FastTESR<TilePedestal> {
 
 		RenderHelper.disableStandardItemLighting();
 		GlStateManager.enableLighting();
+
 	}
 }

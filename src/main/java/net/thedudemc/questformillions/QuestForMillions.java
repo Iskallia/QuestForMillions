@@ -1,6 +1,7 @@
 package net.thedudemc.questformillions;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -14,13 +15,17 @@ import net.thedudemc.questformillions.client.QFMClient;
 import net.thedudemc.questformillions.client.gui.GuiRenderer;
 import net.thedudemc.questformillions.common.network.TotalItemsPacket;
 import net.thedudemc.questformillions.common.network.TotalItemsPacketHandler;
+import net.thedudemc.questformillions.common.storage.CapabilityHandler;
+import net.thedudemc.questformillions.common.storage.IMillion;
+import net.thedudemc.questformillions.common.storage.Million;
+import net.thedudemc.questformillions.common.storage.MillionsStorage;
 import net.thedudemc.questformillions.common.util.Config;
 
-@Mod(modid = QuestForMillions.MODID, useMetadata = true)
+@Mod(modid = QuestForMillions.MODID, useMetadata = true, dependencies = "required-after:ftblib")
 public class QuestForMillions {
 
 	public static final String MODID = "questformillions";
-	public static final SimpleNetworkWrapper PACKET = NetworkRegistry.INSTANCE.newSimpleChannel("questformillions_packets");
+	public static final SimpleNetworkWrapper PACKET = NetworkRegistry.INSTANCE.newSimpleChannel("qfm_packets");
 
 	@Instance
 	public static QuestForMillions instance;
@@ -30,12 +35,16 @@ public class QuestForMillions {
 		Config.init(event.getSuggestedConfigurationFile());
 		PACKET.registerMessage(TotalItemsPacketHandler.class, TotalItemsPacket.class, 0, Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new GuiRenderer());
+		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
+		CapabilityManager.INSTANCE.register(IMillion.class, new MillionsStorage(), Million::new);
 
 	}
 
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
-
+		if (event.getSide() == Side.CLIENT) {
+			QFMClient.registerKeybinds();
+		}
 	}
 
 	@EventHandler

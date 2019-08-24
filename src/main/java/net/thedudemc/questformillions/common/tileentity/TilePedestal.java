@@ -2,12 +2,9 @@ package net.thedudemc.questformillions.common.tileentity;
 
 import java.util.List;
 
-import com.feed_the_beast.ftblib.lib.data.FTBLibAPI;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,15 +18,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.thedudemc.questformillions.QuestForMillions;
 import net.thedudemc.questformillions.common.init.QFMItems;
-import net.thedudemc.questformillions.common.network.TotalItemsPacket;
+import net.thedudemc.questformillions.common.storage.IMillion;
+import net.thedudemc.questformillions.common.storage.MillionProvider;
 import net.thedudemc.questformillions.common.util.Config;
 
 public class TilePedestal extends TileEntity implements ITickable {
 
 	int totalItems = 0;
-	String owningTeam = "";
+	String owningPlayer = "";
 
 	static final int SIZE = 1;
 	static final int MAX = 1000000;
@@ -46,15 +43,6 @@ public class TilePedestal extends TileEntity implements ITickable {
 			return;
 
 		// once per second, update the necessary clients of their total diamonds.
-		if (getWorld().getTotalWorldTime() % 20 == 0) {
-			for (EntityPlayer p : this.getWorld().playerEntities) {
-				EntityPlayerMP player = (EntityPlayerMP) p;
-				if (FTBLibAPI.isPlayerInTeam(p.getUniqueID(), this.getOwningTeam())) {
-					QuestForMillions.PACKET.sendTo(new TotalItemsPacket(getTotalItems()), player);
-				}
-			}
-			// TODO: send only to specific team, dependant on who owns the pedestal.
-		}
 
 		double x = this.getPos().getX() + 0.5D;
 		double y = this.getPos().getY() + 2D;
@@ -80,7 +68,7 @@ public class TilePedestal extends TileEntity implements ITickable {
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("items", itemHandler.serializeNBT());
 		compound.setInteger("totalItems", getTotalItems());
-		compound.setString("owningTeam", getOwningTeam());
+		compound.setString("owningPlayer", getOwningPlayer());
 		return super.writeToNBT(compound);
 	}
 
@@ -93,8 +81,8 @@ public class TilePedestal extends TileEntity implements ITickable {
 		if (compound.hasKey("totalItems")) {
 			this.setTotalItems(compound.getInteger("totalItems"));
 		}
-		if (compound.hasKey("owningTeam")) {
-			this.setOwningTeam(compound.getString("owningTeam"));
+		if (compound.hasKey("owningPlayer")) {
+			this.setOwningPlayer(compound.getString("owningPlayer"));
 		}
 	}
 
@@ -117,18 +105,23 @@ public class TilePedestal extends TileEntity implements ITickable {
 				}
 			} else {
 				ItemStack toReturn = stack.copy();
-				if (this.getStackInSlot(slot).getCount() <= 0) {
-					this.setStackInSlot(slot, stack);
-					toReturn.setCount(toReturn.getCount() - 1);
+				String player = pedestal.getOwningPlayer();
+				EntityPlayer p = pedestal.getWorld().getPlayerEntityByName(player);
+				if (p.hasCapability(MillionProvider.MILLION_CAP, null)) {
+					if (this.getStackInSlot(slot).getCount() <= 0) {
+						this.setStackInSlot(slot, stack);
+						toReturn.setCount(toReturn.getCount() - 1);
+					}
+					IMillion million = p.getCapability(MillionProvider.MILLION_CAP, null);
+					million.addItems(stack.getCount());
+					World world = pedestal.world;
+					double d0 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+					double d1 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+					double d2 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+					EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, new ItemStack(QFMItems.TREASURE, stack.getCount()));
+					pedestal.world.spawnEntity(treasure);
+					pedestal.markDirty();
 				}
-				pedestal.addToTotalItems(stack.getCount());
-				World world = pedestal.world;
-				double d0 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
-				double d1 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
-				double d2 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
-				EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, new ItemStack(QFMItems.TREASURE, stack.getCount()));
-				pedestal.world.spawnEntity(treasure);
-				pedestal.markDirty();
 				return toReturn;
 			}
 		}
@@ -209,12 +202,12 @@ public class TilePedestal extends TileEntity implements ITickable {
 		this.totalItems = totalItems;
 	}
 
-	public String getOwningTeam() {
-		return owningTeam;
+	public String getOwningPlayer() {
+		return owningPlayer;
 	}
 
-	public void setOwningTeam(String owningTeam) {
-		this.owningTeam = owningTeam;
+	public void setOwningPlayer(String owningPlayer) {
+		this.owningPlayer = owningPlayer;
 	}
 
 	public void addToTotalItems(int amount) {

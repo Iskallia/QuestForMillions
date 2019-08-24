@@ -1,0 +1,122 @@
+---- Minecraft Crash Report ----
+// Daisy, daisy...
+
+Time: 5/30/18 2:11 AM
+Description: Unexpected error
+
+java.lang.IllegalArgumentException: Cannot set property PropertyBool{name=on, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist in BlockStateContainer{block=jmilam:xboxone, properties=[facing]}
+	at net.minecraft.block.state.BlockStateContainer$StateImplementation.withProperty(BlockStateContainer.java:221)
+	at net.thedudemc.avasmod.objects.blocks.XboxOne.getStateForPlacement(XboxOne.java:52)
+	at net.minecraft.item.ItemBlock.onItemUse(ItemBlock.java:55)
+	at net.minecraft.item.ItemStack.onItemUse(ItemStack.java:201)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClickBlock(PlayerControllerMP.java:499)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1692)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2379)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2145)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1933)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1186)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:441)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at net.minecraft.block.state.BlockStateContainer$StateImplementation.withProperty(BlockStateContainer.java:221)
+	at net.thedudemc.avasmod.objects.blocks.XboxOne.getStateForPlacement(XboxOne.java:52)
+	at net.minecraft.item.ItemBlock.onItemUse(ItemBlock.java:55)
+	at net.minecraft.item.ItemStack.onItemUse(ItemStack.java:201)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClickBlock(PlayerControllerMP.java:499)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1692)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2379)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2145)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['jmilthedude'/171, l='MpServer', x=88.41, y=88.00, z=437.48]]
+	Chunk stats: MultiplayerChunkCache: 566, 566
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (12,64,256), Chunk: (at 12,4,0 in 0,16; contains blocks 0,0,256 to 15,255,271), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 68599 game time, 13000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 25 total; [EntityBat['Bat'/128, l='MpServer', x=81.36, y=28.03, z=459.94], EntityBat['Bat'/192, l='MpServer', x=67.62, y=17.66, z=476.39], EntityBat['Bat'/193, l='MpServer', x=57.80, y=46.04, z=479.32], EntityBat['Bat'/198, l='MpServer', x=118.70, y=16.85, z=512.19], EntityPlayerSP['jmilthedude'/171, l='MpServer', x=88.41, y=88.00, z=437.48], EntityBat['Bat'/199, l='MpServer', x=118.58, y=20.10, z=508.55], EntityItem['item.item.stick'/200, l='MpServer', x=129.77, y=90.00, z=485.54], EntityItem['item.item.stick'/201, l='MpServer', x=132.00, y=88.00, z=484.06], EntityBat['Bat'/102, l='MpServer', x=25.26, y=21.04, z=443.04], EntityBat['Bat'/103, l='MpServer', x=36.75, y=60.10, z=426.41], EntityBat['Bat'/104, l='MpServer', x=48.22, y=23.29, z=450.43], EntityBat['Bat'/109, l='MpServer', x=50.23, y=13.12, z=373.66], EntityItem['item.item.avanite_helmet'/118, l='MpServer', x=82.14, y=89.00, z=426.73], EntityItem['item.item.avanite_chestplate'/119, l='MpServer', x=83.05, y=89.00, z=426.56], EntityBat['Bat'/183, l='MpServer', x=41.97, y=50.02, z=484.56], EntityItem['item.item.avanite_leggings'/120, l='MpServer', x=83.81, y=89.00, z=426.57], EntityBat['Bat'/184, l='MpServer', x=35.44, y=46.05, z=496.76], EntityItem['item.item.avanite_boots'/121, l='MpServer', x=84.55, y=89.00, z=426.22], EntityItem['item.item.avanite_axe'/122, l='MpServer', x=85.48, y=89.00, z=425.71], EntityItem['item.item.avanite_hoe'/123, l='MpServer', x=85.30, y=89.00, z=426.75], EntityItem['item.item.avanite_pickaxe'/124, l='MpServer', x=86.11, y=89.00, z=426.56], EntityItem['item.item.avanite_shovel'/125, l='MpServer', x=86.76, y=89.00, z=425.53], EntityItem['item.item.avanite_sword'/126, l='MpServer', x=86.55, y=89.00, z=427.88], EntityBat['Bat'/127, l='MpServer', x=76.15, y=13.78, z=430.51], EntityBat['Bat'/191, l='MpServer', x=76.15, y=31.07, z=475.87]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:461)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2885)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:470)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_171, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 731540728 bytes (697 MB) / 1546125312 bytes (1474 MB) up to 3795845120 bytes (3620 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP 9.42 Powered by Forge 14.23.3.2655 5 mods loaded, 5 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State     | ID        | Version      | Source                           | Signature |
+	|:--------- |:--------- |:------------ |:-------------------------------- |:--------- |
+	| UCHIJAAAA | minecraft | 1.12.2       | minecraft.jar                    | None      |
+	| UCHIJAAAA | mcp       | 9.42         | minecraft.jar                    | None      |
+	| UCHIJAAAA | FML       | 8.0.99.99    | forgeSrc-1.12.2-14.23.3.2655.jar | None      |
+	| UCHIJAAAA | forge     | 14.23.3.2655 | forgeSrc-1.12.2-14.23.3.2655.jar | None      |
+	| UCHIJAAAA | jmilam    | 0.1          | bin                              | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 391.01' Renderer: 'GeForce GTX 1050 Ti/PCIe/SSE2'
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1050 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 391.01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz

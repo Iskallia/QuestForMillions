@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -23,9 +24,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedudemc.questformillions.QuestForMillions;
 import net.thedudemc.questformillions.common.init.QFMBlocks;
-import net.thedudemc.questformillions.common.network.TotalItemsPacket;
 import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 public class BlockPedestal extends Block {
@@ -73,14 +72,20 @@ public class BlockPedestal extends Block {
 	}
 
 	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		// TODO Auto-generated method stub
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+	}
+
+	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		// super.getDrops(drops, world, pos, state, fortune);
 		TilePedestal pedestal = (TilePedestal) world.getTileEntity(pos);
 		if (pedestal != null) {
 			ItemStack drop = new ItemStack(QFMBlocks.PEDESTAL);
 			NBTTagCompound compound = new NBTTagCompound();
-			compound.setInteger("totalItems", pedestal.getTotalItems());
-			compound.setString("owningTeam", pedestal.getOwningTeam());
+			// compound.setInteger("totalItems", pedestal.getTotalItems());
+			compound.setString("owningPlayer", pedestal.getOwningPlayer());
 			drop.setTagCompound(compound);
 
 			drops.add(drop);
@@ -98,7 +103,7 @@ public class BlockPedestal extends Block {
 	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
 		super.harvestBlock(worldIn, player, pos, state, te, stack);
 		worldIn.setBlockToAir(pos);
-		QuestForMillions.PACKET.sendToAll(new TotalItemsPacket(0));
+		// QuestForMillions.PACKET.sendToAll(new TotalItemsPacket(0));
 	}
 
 	@Override

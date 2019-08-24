@@ -1,5 +1,6 @@
 package net.thedudemc.questformillions.client.gui;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -19,26 +20,28 @@ public class GuiRenderer {
 
 	@SubscribeEvent
 	public void onRender(RenderGameOverlayEvent.Pre event) {
-		if (isOverlayEnabled) {
-			if (event.getType() == ElementType.ALL) {
-				new GuiOverlay(getTotalItems(), isNumberVisible);
+		if (Minecraft.getMinecraft().inGameHasFocus) {
+			if (isOverlayEnabled) {
+				if (event.getType() == ElementType.ALL) {
+					new GuiOverlay(getTotalItems(), isNumberVisible);
+				}
 			}
 		}
 	}
 
 	@SubscribeEvent
 	public void onClientTick(ClientTickEvent event) {
-		if (QFMClient.KEY_TOGGLE_OVERLAY.isPressed()) {
-			if (isOverlayEnabled && isNumberVisible) {
-				isOverlayEnabled = false;
-				isNumberVisible = false;
-			} else if (isOverlayEnabled && !isNumberVisible) {
-				isNumberVisible = true;
-			} else if (!isOverlayEnabled && !isNumberVisible) {
-				isOverlayEnabled = true;
+		if (Minecraft.getMinecraft().inGameHasFocus) {
+			if (QFMClient.KEY_TOGGLE_OVERLAY.isPressed()) {
+				if (isOverlayEnabled && isNumberVisible) {
+					isOverlayEnabled = false;
+					isNumberVisible = false;
+				} else if (isOverlayEnabled && !isNumberVisible) {
+					isNumberVisible = true;
+				} else if (!isOverlayEnabled && !isNumberVisible) {
+					isOverlayEnabled = true;
+				}
 			}
-			System.out.println("Overlay: " + isOverlayEnabled);
-			System.out.println("Number: " + isNumberVisible);
 		}
 
 	}
