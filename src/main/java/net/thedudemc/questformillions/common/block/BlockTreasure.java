@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.thedudemc.questformillions.common.init.QFMItems;
 
 public class BlockTreasure extends BlockSnow {
@@ -51,6 +52,10 @@ public class BlockTreasure extends BlockSnow {
 	@Override
 	public int quantityDropped(Random random) {
 		return 0;
+	}
+
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 	}
 
 }

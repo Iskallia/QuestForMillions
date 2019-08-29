@@ -29,7 +29,7 @@ import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 public class BlockPedestal extends Block {
 
-	private AxisAlignedBB boundingBox = new AxisAlignedBB(0.0625D, 0, 0.0625D, 0.875D, 1, 0.875D);
+	private AxisAlignedBB boundingBox = new AxisAlignedBB(0.0625D, 0, 0.0625D, 0.9375D, 1, 0.9375D);
 
 	public BlockPedestal() {
 		super(Material.IRON);
