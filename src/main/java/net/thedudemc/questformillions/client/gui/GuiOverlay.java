@@ -43,8 +43,8 @@ public class GuiOverlay extends Gui {
 			// draw diamond icon
 			this.mc.getRenderItem().renderItemIntoGUI(new ItemStack(Items.DIAMOND), 10, 10);
 			if (isNumberVisible) {
-				drawString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 78, startY + 5, 0x000000);
-				drawString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 78, startY + 4, 0xFFFFFF);
+				drawCenteredString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 111, startY + 5, 0x000000);
+				drawCenteredString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 111, startY + 4, 0xFFFFFF);
 			}
 		}
 	}

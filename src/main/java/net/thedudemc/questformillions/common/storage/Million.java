@@ -18,6 +18,7 @@ public class Million implements IMillion {
 
 	@Override
 	public void addItems(int amount) {
+
 		this.amount += amount;
 
 	}

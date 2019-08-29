@@ -108,19 +108,22 @@ public class TilePedestal extends TileEntity implements ITickable {
 				String player = pedestal.getOwningPlayer();
 				EntityPlayer p = pedestal.getWorld().getPlayerEntityByName(player);
 				if (p.hasCapability(MillionProvider.MILLION_CAP, null)) {
-					if (this.getStackInSlot(slot).getCount() <= 0) {
-						this.setStackInSlot(slot, stack);
-						toReturn.setCount(toReturn.getCount() - 1);
-					}
 					IMillion million = p.getCapability(MillionProvider.MILLION_CAP, null);
-					million.addItems(stack.getCount());
-					World world = pedestal.world;
-					double d0 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
-					double d1 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
-					double d2 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
-					EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, new ItemStack(QFMItems.TREASURE, stack.getCount()));
-					pedestal.world.spawnEntity(treasure);
-					pedestal.markDirty();
+					if (million.getAmount() < 1000000) {
+						if (this.getStackInSlot(slot).getCount() <= 0) {
+							this.setStackInSlot(slot, stack);
+							toReturn.setCount(toReturn.getCount() - 1);
+						}
+						million.addItems(stack.getCount());
+						World world = pedestal.world;
+						double d0 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+						double d1 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+						double d2 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
+						EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2,
+								new ItemStack(QFMItems.TREASURE, stack.getCount()));
+						pedestal.world.spawnEntity(treasure);
+						pedestal.markDirty();
+					}
 				}
 				return toReturn;
 			}
@@ -173,14 +176,22 @@ public class TilePedestal extends TileEntity implements ITickable {
 	}
 
 	public boolean collectItems() {
+
 		boolean itemsCollected = false;
-		List<EntityItem> items = TilePedestal.this.getWorld().<EntityItem>getEntitiesWithinAABB(EntityItem.class, getAABB(), EntitySelectors.IS_ALIVE);
-		for (EntityItem item : items) {
-			ItemStack stack = item.getItem().copy();
-			if (!itemHandler.insertItem(0, stack, true).isEmpty()) {
-				itemHandler.insertItem(0, stack, false);
-				itemsCollected = true;
-				item.setDead();
+		String player = this.getOwningPlayer();
+		EntityPlayer p = this.getWorld().getPlayerEntityByName(player);
+		if (p.hasCapability(MillionProvider.MILLION_CAP, null)) {
+			IMillion million = p.getCapability(MillionProvider.MILLION_CAP, null);
+			if (million.getAmount() < 1000000) {
+				List<EntityItem> items = TilePedestal.this.getWorld().<EntityItem>getEntitiesWithinAABB(EntityItem.class, getAABB(), EntitySelectors.IS_ALIVE);
+				for (EntityItem item : items) {
+					ItemStack stack = item.getItem().copy();
+					if (!itemHandler.insertItem(0, stack, true).isEmpty()) {
+						itemHandler.insertItem(0, stack, false);
+						itemsCollected = true;
+						item.setDead();
+					}
+				}
 			}
 		}
 		return itemsCollected;
