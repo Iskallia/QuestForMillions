@@ -110,7 +110,6 @@ public class Million implements IMillion {
 			}
 		}
 		return null;
-
 	}
 
 	@Override
@@ -121,7 +120,13 @@ public class Million implements IMillion {
 			}
 		}
 		return null;
-
 	}
 
+	public int getTotalCount() {
+		int amount = 0;
+		for (MillionPlayer player : players) {
+			amount += player.getAmount();
+		}
+		return amount;
+	}
 }

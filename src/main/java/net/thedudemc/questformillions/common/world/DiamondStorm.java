@@ -31,14 +31,14 @@ public class DiamondStorm {
 
 	}
 
-	public void spawnLava(BlockPos pos) {
+	public void setLava(BlockPos pos) {
 
 		world.setBlockState(pos, Blocks.FLOWING_LAVA.getDefaultState());
 	}
 
-	public void spawnDiamond() {
+	public void spawnRainItem() {
 		Random rand = new Random();
-		BlockPos pos = selectRandomForDiamond();
+		BlockPos pos = getRandomForDiamond();
 		if (world.isRemote)
 			return;
 		EntityItem e = null;
@@ -51,7 +51,7 @@ public class DiamondStorm {
 		world.spawnEntity(e);
 	}
 
-	public BlockPos selectHighestBlock() {
+	public BlockPos getHighestBlock() {
 		int[] highest = { 0, 0, 0 };
 		for (int x = min; x < max; x++) {
 			for (int z = min; z < max; z++) {
@@ -66,7 +66,7 @@ public class DiamondStorm {
 		return new BlockPos(highest[0], highest[1], highest[2]);
 	}
 
-	public BlockPos selectRandomForDiamond() {
+	public BlockPos getRandomForDiamond() {
 		Random rand = new Random();
 		int minY = 250;
 		int maxY = 255;
@@ -76,7 +76,7 @@ public class DiamondStorm {
 		return new BlockPos(x, y, z);
 	}
 
-	public BlockPos selectRandomForLava() {
+	public BlockPos getRandomForLava() {
 		Random rand = new Random();
 		int x = origin.getX() + (rand.nextInt(max - min) + min);
 		int z = origin.getZ() + (rand.nextInt(max - min) + min);

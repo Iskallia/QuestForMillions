@@ -25,10 +25,10 @@ public class EventStorm {
 				int age = storm.getAge();
 				if (age < duration) {
 					if (age % 2 != 0) {
-						storm.spawnDiamond();
+						storm.spawnRainItem();
 					}
 					if (age % 100 == 0) {
-						storm.spawnLava(storm.selectRandomForLava());
+						storm.setLava(storm.getRandomForLava());
 					}
 					storm.setAge(age + 1);
 				} else {
