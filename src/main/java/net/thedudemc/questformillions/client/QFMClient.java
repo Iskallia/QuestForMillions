@@ -18,6 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.thedudemc.questformillions.QuestForMillions;
 import net.thedudemc.questformillions.client.render.RenderPedestal;
 import net.thedudemc.questformillions.common.init.QFMBlocks;
+import net.thedudemc.questformillions.common.init.QFMItems;
 import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 @Mod.EventBusSubscriber(modid = QuestForMillions.MODID, value = Side.CLIENT)
@@ -29,6 +30,9 @@ public class QFMClient {
 	static void onRegisterModels(final ModelRegistryEvent context) {
 		registerItemModel(Item.getItemFromBlock(QFMBlocks.PEDESTAL), 0, "inventory");
 		registerItemModel(Item.getItemFromBlock(QFMBlocks.TREASURE), 0, "inventory");
+
+		ResourceLocation name = Items.DIAMOND.getRegistryName();
+		ModelLoader.setCustomModelResourceLocation(QFMItems.TOTEM_OF_RAIN, 0, new ModelResourceLocation(name, "inventory"));
 	}
 
 	private static void registerItemModel(final Item item, final int meta, final String variant) {

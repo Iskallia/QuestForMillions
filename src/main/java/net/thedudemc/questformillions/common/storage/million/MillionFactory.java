@@ -1,4 +1,4 @@
-package net.thedudemc.questformillions.common.storage;
+package net.thedudemc.questformillions.common.storage.million;
 
 import java.util.concurrent.Callable;
 

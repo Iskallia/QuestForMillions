@@ -1,4 +1,4 @@
-package net.thedudemc.questformillions.common.storage;
+package net.thedudemc.questformillions.common.storage.million;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;

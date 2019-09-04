@@ -5,9 +5,9 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.animation.FastTESR;
+import net.thedudemc.questformillions.QuestForMillions;
 import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 public class RenderPedestal extends FastTESR<TilePedestal> {
@@ -16,7 +16,7 @@ public class RenderPedestal extends FastTESR<TilePedestal> {
 
 	@Override
 	public void renderTileEntityFast(TilePedestal te, double x, double y, double z, float partialTicks, int destroyStage, float partial, BufferBuilder buffer) {
-		ItemStack itemStack = new ItemStack(Items.DIAMOND);
+		ItemStack itemStack = new ItemStack(QuestForMillions.item);
 
 		if (itemStack.isEmpty()) {
 			return;

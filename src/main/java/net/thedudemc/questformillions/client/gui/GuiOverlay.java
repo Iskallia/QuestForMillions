@@ -3,7 +3,6 @@ package net.thedudemc.questformillions.client.gui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.thedudemc.questformillions.QuestForMillions;
@@ -41,7 +40,7 @@ public class GuiOverlay extends Gui {
 			// draw colored progress bar
 			drawTexturedModalRect(startX + 18 + 3, startY, 0, 22, (int) ((((float) 176) * ((float) this.totalItems / 1000000f))), 16);
 			// draw diamond icon
-			this.mc.getRenderItem().renderItemIntoGUI(new ItemStack(Items.DIAMOND), 10, 10);
+			this.mc.getRenderItem().renderItemIntoGUI(new ItemStack(QuestForMillions.item), 10, 10);
 			if (isNumberVisible) {
 				drawCenteredString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 111, startY + 5, 0x000000);
 				drawCenteredString(this.mc.fontRenderer, String.valueOf(this.totalItems > 1000000 ? 1000000 : this.totalItems) + "/1000000", startX + 111, startY + 4, 0xFFFFFF);

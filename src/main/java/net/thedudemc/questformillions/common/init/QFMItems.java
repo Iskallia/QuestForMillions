@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.thedudemc.questformillions.QuestForMillions;
 import net.thedudemc.questformillions.common.item.ItemPedestal;
+import net.thedudemc.questformillions.common.item.ItemTotem;
 import net.thedudemc.questformillions.common.item.ItemTreasure;
 
 @ObjectHolder(QuestForMillions.MODID)
@@ -17,12 +18,13 @@ public class QFMItems {
 
 	public static final Item PEDESTAL = null;
 	public static final Item TREASURE = null;
+	public static final Item TOTEM_OF_RAIN = null;
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 		// register items
-		// registerItem(registry, "test_item", new ItemTest());
+		registerItem(registry, "totem_of_rain", new ItemTotem());
 
 		// register block items
 		registerItem(registry, "pedestal", new ItemPedestal(QFMBlocks.PEDESTAL));

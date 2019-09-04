@@ -103,6 +103,8 @@ public class BlockPedestal extends Block {
 	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
 		super.harvestBlock(worldIn, player, pos, state, te, stack);
 		worldIn.setBlockToAir(pos);
+		// IMillion cap = worldIn.getCapability(MillionProvider.MILLION_CAP, null);
+		// cap.removePlayer(cap.getPlayer(player.getUniqueID()));
 		// QuestForMillions.PACKET.sendToAll(new TotalItemsPacket(0));
 	}
 

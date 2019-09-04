@@ -10,10 +10,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedudemc.questformillions.common.init.QFMItems;
 
 public class BlockTreasure extends BlockSnow {
@@ -25,6 +28,19 @@ public class BlockTreasure extends BlockSnow {
 		this.setSoundType(SoundType.METAL);
 		this.setCreativeTab(CreativeTabs.MISC);
 
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+		int layer = ((Integer) stateIn.getValue(LAYERS));
+		if (rand.nextInt(40) == 1) {
+			double offsetY = ((double) layer / 7D) + .025D;
+			double offsetX = (double) rand.nextFloat();
+			double offsetZ = (double) rand.nextFloat();
+			worldIn.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, pos.getX() + offsetX, pos.getY() + offsetY, pos.getZ() + offsetZ, 0, 0, 0);
+
+		}
 	}
 
 	@Override

@@ -1,9 +1,13 @@
 //Items
-item.template.test_item.name=Test Item
+item.questformillions.totem_of_rain.name=Totem of Rain
 
 //Blocks
 tile.questformillions.pedestal.name=Pedestal
 tile.questformillions.treasure.name=Treasure
+
+//key
+key.questformillions.desc=Toggle Progress Bar
+key.questformillions.category=Quest For Millions
 
 
 

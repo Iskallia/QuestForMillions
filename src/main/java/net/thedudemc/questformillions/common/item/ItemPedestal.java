@@ -18,6 +18,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.thedudemc.questformillions.common.init.QFMBlocks;
+import net.thedudemc.questformillions.common.storage.million.MillionPlayer;
+import net.thedudemc.questformillions.common.storage.million.MillionProvider;
 import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 public class ItemPedestal extends ItemBlock {
@@ -49,6 +51,7 @@ public class ItemPedestal extends ItemBlock {
 			ItemStack itemstack = player.getHeldItem(hand);
 			IBlockState state = QFMBlocks.PEDESTAL.getDefaultState();
 			worldIn.setBlockState(pos.up(), state);
+			worldIn.getCapability(MillionProvider.MILLION_CAP, null).addPlayer(new MillionPlayer(player.getName(), player.getUniqueID(), 0, pos.up()));
 			SoundType soundtype = state.getBlock().getSoundType(state, worldIn, pos, player);
 			worldIn.playSound((EntityPlayer) null, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 			TilePedestal pedestal = (TilePedestal) worldIn.getTileEntity(pos.up());

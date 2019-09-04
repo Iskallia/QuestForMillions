@@ -26,87 +26,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer1",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer1",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer1",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer1",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer1",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer1",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer1",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer1",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer1",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer1",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer1",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer1",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer1",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer1",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer1",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer1",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer1",
-				"weight": 5
+				"weight": 2
 			}
 		],
 
@@ -114,87 +114,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer2",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer2",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer2",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer2",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer2",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer2",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer2",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer2",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer2",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer2",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer2",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer2",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer2",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer2",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer2",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer2",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer2",
-				"weight": 5
+				"weight": 2
 			}
 		],
 
@@ -202,87 +202,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer3",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer3",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer3",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer3",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer3",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer3",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer3",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer3",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer3",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer3",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer3",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer3",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer3",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer3",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer3",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer3",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer3",
-				"weight": 5
+				"weight": 2
 			}
 		],
 
@@ -290,87 +290,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer4",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer4",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer4",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer4",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer4",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer4",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer4",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer4",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer4",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer4",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer4",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer4",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer4",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer4",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer4",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer4",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer4",
-				"weight": 5
+				"weight": 2
 			}
 		],
 
@@ -378,87 +378,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer5",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer5",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer5",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer5",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer5",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer5",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer5",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer5",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer5",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer5",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer5",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer5",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer5",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer5",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer5",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer5",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer5",
-				"weight": 5
+				"weight": 2
 			}
 		],
 
@@ -466,87 +466,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer6",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer6",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer6",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer6",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer6",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer6",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer6",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer6",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer6",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer6",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer6",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer6",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer6",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer6",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer6",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer6",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer6",
-				"weight": 5
+				"weight": 2
 			}
 		],
 
@@ -554,87 +554,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer7",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer7",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer7",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer7",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer7",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer7",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer7",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer7",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer7",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer7",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer7",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer7",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer7",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer7",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer7",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer7",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer7",
-				"weight": 5
+				"weight": 2
 			}
 		],
 
@@ -642,87 +642,87 @@
 		[
 			{
 				"model": "questformillions:treasure_combined_v1_layer8",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v2_layer8",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v3_layer8",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v4_layer8",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v5_layer8",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_combined_v6_layer8",
-				"weight": 3
+				"weight": 1
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v1_layer8",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_diamond_v2_layer8",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v1_layer8",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_emerald_v2_layer8",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_gold_default_layer8",
-				"weight": 22
+				"weight": 20
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v1_layer8",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_gold_v2_layer8",
-				"weight": 7
+				"weight": 3
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v1_layer8",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_iskallium_v2_layer8",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v1_layer8",
-				"weight": 5
+				"weight": 2
 			},
 
 			{
 				"model": "questformillions:treasure_ruby_v2_layer8",
-				"weight": 5
+				"weight": 2
 			}
 		]
 	}
