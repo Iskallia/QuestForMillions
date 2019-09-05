@@ -20,6 +20,10 @@ public class Config {
 	public static int totemOfRain_duration;
 	public static int totemOfRain_range;
 	public static int totemOfRain_chanceForBlock;
+	public static int totemOfRain_chanceForTNT;
+
+	// bonus
+	public static int bonus_chanceForBonus;
 
 	public static void init(File file) {
 
@@ -36,6 +40,9 @@ public class Config {
 		totemOfRain_duration = config.getInt("duration", "totem_of_rain", 60, 60, 300, "The amount of seconds the rain will last.");
 		totemOfRain_range = config.getInt("range", "totem_of_rain", 16, 8, 64, "The effective range from the summoning player to rain. This is calculated as a box at this distance each cardinal direction centered on the summoning player.");
 		totemOfRain_chanceForBlock = config.getInt("chanceForBlock", "totem_of_rain", 1, 1, 100, "Set the chance that a diamond rained during the Rain event will be a diamond block.");
+		totemOfRain_chanceForTNT = config.getInt("chanceForTNT", "totem_of_rain", 20, 1, 100, "Set the chance that every 5 seconds, a primed TNT may rain down above the player.");
+
+		bonus_chanceForBonus = config.getInt("chanceForBonus", "bonus", 5, 1, 100, "Set the chance that a bonus will occur on each Sunday morning in-game.");
 
 		config.save();
 	}

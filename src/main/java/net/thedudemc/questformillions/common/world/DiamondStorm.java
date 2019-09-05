@@ -18,17 +18,20 @@ public class DiamondStorm {
 	private BlockPos origin;
 	private EntityPlayer summoner;
 	private int age = 0;
+
 	private static int range = Config.totemOfRain_range;
 	private static int min = range * -1;
 	private static int max = range;
-	private static Item item = QuestForMillions.item;
-	private static int chanceForBlock = Config.totemOfRain_chanceForBlock;
 
 	public DiamondStorm(World world, BlockPos location, EntityPlayer summoner) {
 		this.world = world;
 		this.origin = location;
 		this.summoner = summoner;
 
+	}
+
+	public void cancel() {
+		this.setAge(Config.totemOfRain_duration * 20);
 	}
 
 	public void setLava(BlockPos pos) {
@@ -42,10 +45,10 @@ public class DiamondStorm {
 		if (world.isRemote)
 			return;
 		EntityItem e = null;
-		if (rand.nextInt(100) <= chanceForBlock) {
+		if (rand.nextInt(100) <= Config.totemOfRain_chanceForBlock) {
 			e = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.DIAMOND_BLOCK), 1));
 		} else {
-			e = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(item, 1));
+			e = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(QuestForMillions.item, 1));
 		}
 
 		world.spawnEntity(e);

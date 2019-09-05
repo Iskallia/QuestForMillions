@@ -50,6 +50,7 @@ public class QuestForMillions {
 		if (event.getSide() == Side.CLIENT) {
 			QFMClient.registerKeybinds();
 		}
+
 	}
 
 	@EventHandler
