@@ -1,0 +1,66 @@
+{
+	"loot": {
+		"Adventurer Box": {
+			"minecraft:elytra": { 
+				"enchants": [ 
+					{ "id": "unbreaking", "lvl": 3 },
+					{ "id": "mending", "lvl": 1 }
+				],
+				"count": 1,
+				"metadata": 0
+			},
+			"minecraft:diamond_pickaxe": { 
+				"enchants": [ 
+					{ "id": "efficiency", "lvl": 5 },
+					{ "id": "unbreaking", "lvl": 3 },
+					{ "id": "mending", "lvl": 1 }
+				],
+				"count": 1,
+				"metadata": 0
+			}
+		},
+		"Overkill": {
+			"minecraft:diamond_sword": {
+				"enchants": [
+					{ "id": "sharpness", "lvl": 10 },
+					{ "id": "unbreaking", "lvl": 3 },
+					{ "id": "mending", "lvl": 1 }
+				],
+				"count": 1,
+				"metadata": 0
+			}
+		},
+		"Metallic": {
+			"minecraft:iron_block": {
+				"enchants": [
+				],
+				"count": 64,
+				"metadata": 0
+			},
+			"minecraft:iron_block": {
+				"enchants": [
+				],
+				"count": 64,
+				"metadata": 0
+			},
+			"minecraft:iron_block": {
+				"enchants": [
+				],
+				"count": 64,
+				"metadata": 0
+			},
+			"minecraft:iron_block": {
+				"enchants": [
+				],
+				"count": 64,
+				"metadata": 0
+			},
+			"minecraft:iron_block": {
+				"enchants": [
+				],
+				"count": 64,
+				"metadata": 0
+			},
+		}
+	}
+}
