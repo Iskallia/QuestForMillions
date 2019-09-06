@@ -39,8 +39,8 @@ public class EventStorm {
 					if (age % 100 == 0) {
 						storm.setLava(storm.getRandomForLava());
 						if (event.world.rand.nextInt(100) < 20) {
-							EntityTNTPrimed tnt = new EntityTNTPrimed(event.world, location.getX(), location.getY() + 15, location.getZ(), summoner);
-							tnt.setFuse(30);
+							EntityTNTPrimed tnt = new EntityTNTPrimed(event.world, location.getX(), location.getY() + 5, location.getZ(), summoner);
+							tnt.setFuse(50);
 							event.world.spawnEntity(tnt);
 						}
 					}

@@ -1,5 +1,7 @@
 package net.thedudemc.questformillions;
 
+import java.io.File;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +21,7 @@ import net.thedudemc.questformillions.common.event.EventStorm;
 import net.thedudemc.questformillions.common.network.TotalItemsPacket;
 import net.thedudemc.questformillions.common.network.TotalItemsPacketHandler;
 import net.thedudemc.questformillions.common.storage.CapabilityHandler;
+import net.thedudemc.questformillions.common.storage.LootHandler;
 import net.thedudemc.questformillions.common.storage.million.IMillion;
 import net.thedudemc.questformillions.common.storage.million.Million;
 import net.thedudemc.questformillions.common.storage.million.MillionsStorage;
@@ -30,13 +33,16 @@ public class QuestForMillions {
 	public static final String MODID = "questformillions";
 	public static final SimpleNetworkWrapper PACKET = NetworkRegistry.INSTANCE.newSimpleChannel("qfm_packets");
 	public static Item item = null;
+	public static LootHandler lootHandler = new LootHandler();
 
 	@Instance
 	public static QuestForMillions instance;
 
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent event) {
-		Config.init(event.getSuggestedConfigurationFile());
+		File configDirectory = new File(event.getModConfigurationDirectory().getPath() + File.separator + "QuestForMillions");
+		Config.init(configDirectory);
+		lootHandler.init(new File(configDirectory, "loot.json"));
 		PACKET.registerMessage(TotalItemsPacketHandler.class, TotalItemsPacket.class, 0, Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new GuiRenderer());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());

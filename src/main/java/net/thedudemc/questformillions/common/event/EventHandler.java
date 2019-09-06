@@ -7,10 +7,12 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.thedudemc.questformillions.QuestForMillions;
 import net.thedudemc.questformillions.common.network.TotalItemsPacket;
+import net.thedudemc.questformillions.common.storage.LootHandler;
 import net.thedudemc.questformillions.common.storage.million.IMillion;
 import net.thedudemc.questformillions.common.storage.million.MillionPlayer;
 import net.thedudemc.questformillions.common.storage.million.MillionProvider;
@@ -45,4 +47,13 @@ public class EventHandler {
 			}
 		}
 	}
+
+	// TODO: Remove this method
+	@SubscribeEvent
+	public static void onJoin(PlayerLoggedInEvent event) {
+
+		event.player.inventory.addItemStackToInventory(LootHandler.getRandomLoot());
+
+	}
+
 }

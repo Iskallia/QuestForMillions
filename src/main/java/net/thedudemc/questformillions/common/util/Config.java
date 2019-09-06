@@ -27,7 +27,7 @@ public class Config {
 
 	public static void init(File file) {
 
-		config = new Configuration(new File("config/QuestForMillions.cfg"));
+		config = new Configuration(new File(file, "QuestForMillions.cfg"));
 		config.load();
 
 		pedestal_range = config.getInt("range", "pedestal", 8, 1, 16, "Sets the radius which the pedestal will pull the items.");
