@@ -5,7 +5,10 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.json.simple.JSONArray;
@@ -26,7 +29,8 @@ public class LootHandler {
 	private JSONObject json;
 	private JSONParser parser = new JSONParser();
 
-	public static List<ItemStack> loot = new ArrayList<ItemStack>();
+	public static List<ItemStack> shulkers = new ArrayList<ItemStack>();
+	public static HashMap<String, Loot> loot = new HashMap<String, Loot>();
 
 	public LootHandler() {
 
@@ -62,14 +66,12 @@ public class LootHandler {
 		// Box
 		for (Object o : jsonLoot.keySet()) {
 			String boxName = (String) o;
-			System.out.println(boxName);
 			JSONObject box = (JSONObject) jsonLoot.get(boxName);
 			JSONArray items = (JSONArray) box.get("items");
 			List<ItemStack> boxItems = new ArrayList<ItemStack>();
 			// item
-			int i = 0;
-			for (Object o1 : items) {
-				JSONObject item = (JSONObject) items.get(i++);
+			for (int i = 0; i < items.size(); i++) {
+				JSONObject item = (JSONObject) items.get(i);
 				String itemId = (String) item.get("id");
 				int count = Math.toIntExact((long) item.get("count"));
 				int meta = Math.toIntExact((long) item.get("metadata"));
@@ -83,44 +85,56 @@ public class LootHandler {
 						stack.addEnchantment(Enchantment.getEnchantmentByLocation(id), lvl);
 					}
 				}
-				System.out.println("Adding: " + itemId);
 				boxItems.add(stack);
-
 			}
 
-			ItemStack shulker = new ItemStack(Item.getItemFromBlock(getRandomShulkerBox()));
-
-			NBTTagCompound blockEntityTag = new NBTTagCompound();
 			NonNullList<ItemStack> list = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
-			NBTTagCompound itemList = new NBTTagCompound();
 			int k = 0;
 			for (ItemStack stack : boxItems) {
 
 				list.set(k++, stack);
 			}
-			ItemStackHelper.saveAllItems(itemList, list);
-			blockEntityTag.setTag("BlockEntityTag", itemList);
-			shulker.setTagCompound(blockEntityTag);
-			shulker.setStackDisplayName(boxName);
-			loot.add(shulker);
+
+			loot.put(boxName, new Loot(list));
 
 		}
 
 	}
 
+	private static ItemStack getPackedShulker(String boxName, NonNullList<ItemStack> list) {
+		ItemStack shulker = new ItemStack(Item.getItemFromBlock(getRandomShulkerBox()));
+		NBTTagCompound blockEntityTag = new NBTTagCompound();
+
+		NBTTagCompound itemList = new NBTTagCompound();
+
+		ItemStackHelper.saveAllItems(itemList, list);
+		blockEntityTag.setTag("BlockEntityTag", itemList);
+		shulker.setTagCompound(blockEntityTag);
+		shulker.setStackDisplayName(boxName);
+
+		return shulker;
+	}
+
 	public static ItemStack getRandomLoot() {
 
-		Random rand = new Random();
-		int index = rand.nextInt(loot.size());
 		if (loot.size() == 0)
 			return ItemStack.EMPTY;
 
-		System.out.println(index);
+		Random rand = new Random();
+		int index = rand.nextInt(loot.size());
+		if (index == loot.size())
+			index = 0;
 
-		ItemStack stack = loot.get(index);
+		List<Map.Entry<String, Loot>> list = new ArrayList<Map.Entry<String, Loot>>(loot.entrySet());
 
-		return stack;
+		Collections.shuffle(list);
+		for (Map.Entry<String, Loot> entry : list) {
 
+			ItemStack stack = getPackedShulker(entry.getKey(), entry.getValue().items);
+			return stack;
+		}
+
+		return ItemStack.EMPTY;
 	}
 
 	private static Block getRandomShulkerBox() {

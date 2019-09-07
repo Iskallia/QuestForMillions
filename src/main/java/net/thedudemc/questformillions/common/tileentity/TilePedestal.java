@@ -18,6 +18,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.thedudemc.questformillions.common.init.QFMItems;
+import net.thedudemc.questformillions.common.storage.LootHandler;
 import net.thedudemc.questformillions.common.storage.million.IMillion;
 import net.thedudemc.questformillions.common.storage.million.MillionPlayer;
 import net.thedudemc.questformillions.common.storage.million.MillionProvider;
@@ -26,6 +27,7 @@ import net.thedudemc.questformillions.common.util.Config;
 public class TilePedestal extends TileEntity implements ITickable {
 
 	String owningPlayer = "";
+	int currentIncrement = 0;
 
 	static final int SIZE = 1;
 	static final int MAX = 1000000;
@@ -66,6 +68,7 @@ public class TilePedestal extends TileEntity implements ITickable {
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("items", itemHandler.serializeNBT());
 		compound.setString("owningPlayer", getOwningPlayer());
+		compound.setInteger("currentIncrement", getCurrentIncrement());
 		return super.writeToNBT(compound);
 	}
 
@@ -77,6 +80,9 @@ public class TilePedestal extends TileEntity implements ITickable {
 		}
 		if (compound.hasKey("owningPlayer")) {
 			this.setOwningPlayer(compound.getString("owningPlayer"));
+		}
+		if (compound.hasKey("currentIncrement")) {
+			this.setCurrentIncrement(compound.getInteger("currentIncrement"));
 		}
 	}
 
@@ -113,6 +119,11 @@ public class TilePedestal extends TileEntity implements ITickable {
 					int treasureAmount = (int) Math.round((double) stack.getCount() * treasureRate);
 					EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, new ItemStack(QFMItems.TREASURE, treasureAmount));
 					pedestal.world.spawnEntity(treasure);
+					if (getOwner(player).getAmount() >= currentIncrement) {
+						EntityItem loot = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, LootHandler.getRandomLoot());
+						pedestal.world.spawnEntity(loot);
+						currentIncrement += 100;
+					}
 					pedestal.markDirty();
 				}
 
@@ -198,6 +209,14 @@ public class TilePedestal extends TileEntity implements ITickable {
 
 	public void setOwningPlayer(String owningPlayer) {
 		this.owningPlayer = owningPlayer;
+	}
+
+	public int getCurrentIncrement() {
+		return currentIncrement;
+	}
+
+	public void setCurrentIncrement(int currentIncrement) {
+		this.currentIncrement = currentIncrement;
 	}
 
 	private MillionPlayer getOwner(String name) {
