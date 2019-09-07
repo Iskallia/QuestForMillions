@@ -64,27 +64,26 @@ public class LootHandler {
 			String boxName = (String) o;
 			System.out.println(boxName);
 			JSONObject box = (JSONObject) jsonLoot.get(boxName);
+			JSONArray items = (JSONArray) box.get("items");
 			List<ItemStack> boxItems = new ArrayList<ItemStack>();
-
 			// item
-			for (Object o1 : box.keySet()) {
-
-				String itemId = (String) o1;
-				System.out.println(itemId);
-				JSONObject item = (JSONObject) box.get(itemId);
+			int i = 0;
+			for (Object o1 : items) {
+				JSONObject item = (JSONObject) items.get(i++);
+				String itemId = (String) item.get("id");
 				int count = Math.toIntExact((long) item.get("count"));
 				int meta = Math.toIntExact((long) item.get("metadata"));
 				ItemStack stack = new ItemStack(Item.getByNameOrId(itemId), count, meta);
 				if (item.containsKey("enchants")) {
 					JSONArray enchantments = (JSONArray) item.get("enchants");
-					for (int i = 0; i < enchantments.size(); i++) {
-						JSONObject ench = (JSONObject) enchantments.get(i);
+					for (int j = 0; j < enchantments.size(); j++) {
+						JSONObject ench = (JSONObject) enchantments.get(j);
 						String id = (String) ench.get("id");
 						int lvl = Math.toIntExact((long) ench.get("lvl"));
 						stack.addEnchantment(Enchantment.getEnchantmentByLocation(id), lvl);
 					}
 				}
-
+				System.out.println("Adding: " + itemId);
 				boxItems.add(stack);
 
 			}
@@ -92,20 +91,19 @@ public class LootHandler {
 			ItemStack shulker = new ItemStack(Item.getItemFromBlock(getRandomShulkerBox()));
 
 			NBTTagCompound blockEntityTag = new NBTTagCompound();
-			int i = 0;
+			NonNullList<ItemStack> list = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
+			NBTTagCompound itemList = new NBTTagCompound();
+			int k = 0;
 			for (ItemStack stack : boxItems) {
 
-				NBTTagCompound items = new NBTTagCompound();
-
-				NonNullList<ItemStack> list = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
-
-				list.set(i++, stack);
-				ItemStackHelper.saveAllItems(items, list);
-				blockEntityTag.setString("CustomName", boxName);
-				blockEntityTag.setTag("BlockEntityTag", items);
+				list.set(k++, stack);
 			}
+			ItemStackHelper.saveAllItems(itemList, list);
+			blockEntityTag.setTag("BlockEntityTag", itemList);
 			shulker.setTagCompound(blockEntityTag);
+			shulker.setStackDisplayName(boxName);
 			loot.add(shulker);
+
 		}
 
 	}
