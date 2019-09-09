@@ -1,6 +1,10 @@
 package net.thedudemc.questformillions.client.gui;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -10,9 +14,12 @@ import net.thedudemc.questformillions.client.QFMClient;
 public class GuiRenderer {
 
 	public static GuiRenderer instance;
-	int totalItems = 0;
+	int currentPlayerTotalItems = 0;
 	boolean isOverlayEnabled = true;
 	boolean isNumberVisible = true;
+	boolean isLeaderboardVisible = true;
+	private LinkedHashMap<String, Integer> players = new LinkedHashMap<String, Integer>();
+	Minecraft mc = Minecraft.getMinecraft();
 
 	public GuiRenderer() {
 		instance = this;
@@ -20,10 +27,13 @@ public class GuiRenderer {
 
 	@SubscribeEvent
 	public void onRender(RenderGameOverlayEvent.Pre event) {
-		if (Minecraft.getMinecraft().inGameHasFocus) {
+		if (mc.inGameHasFocus) {
 			if (isOverlayEnabled) {
 				if (event.getType() == ElementType.ALL) {
-					new GuiOverlay(getTotalItems(), isNumberVisible);
+					int amount = getCurrentPlayerTotalItems();
+					if (amount > 0) {
+						new GuiOverlay(getCurrentPlayerTotalItems(), players, isNumberVisible, isLeaderboardVisible);
+					}
 				}
 			}
 		}
@@ -31,13 +41,16 @@ public class GuiRenderer {
 
 	@SubscribeEvent
 	public void onClientTick(ClientTickEvent event) {
-		if (Minecraft.getMinecraft().inGameHasFocus) {
+		if (mc.inGameHasFocus) {
 			if (QFMClient.KEY_TOGGLE_OVERLAY.isPressed()) {
-				if (isOverlayEnabled && isNumberVisible) {
+				if (isOverlayEnabled && isNumberVisible && isLeaderboardVisible) {
 					isOverlayEnabled = false;
 					isNumberVisible = false;
+					isLeaderboardVisible = false;
 				} else if (isOverlayEnabled && !isNumberVisible) {
 					isNumberVisible = true;
+				} else if (isNumberVisible && !isLeaderboardVisible) {
+					isLeaderboardVisible = true;
 				} else if (!isOverlayEnabled && !isNumberVisible) {
 					isOverlayEnabled = true;
 				}
@@ -46,11 +59,25 @@ public class GuiRenderer {
 
 	}
 
-	public int getTotalItems() {
-		return totalItems;
+	public int getCurrentPlayerTotalItems() {
+		EntityPlayer player = mc.player;
+		if (players.containsKey(player.getName()))
+			return players.get(player.getName());
+		else
+			return 0;
 	}
 
-	public void setTotalItems(int totalItems) {
-		this.totalItems = totalItems;
+	public void setCurrentPlayerTotalItems(int totalItems) {
+		EntityPlayer player = mc.player;
+		players.put(player.getName(), totalItems);
 	}
+
+	public HashMap<String, Integer> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(LinkedHashMap<String, Integer> players) {
+		this.players = players;
+	}
+
 }

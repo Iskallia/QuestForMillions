@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import net.minecraft.util.math.BlockPos;
 
-public class MillionPlayer {
+public class MillionPlayer implements Comparable<MillionPlayer> {
 
 	private String name;
 	private UUID uuid;
@@ -64,6 +64,11 @@ public class MillionPlayer {
 
 	public void setPedestal(BlockPos pedestal) {
 		this.pedestal = pedestal;
+	}
+
+	@Override
+	public int compareTo(MillionPlayer player) {
+		return player.getAmount() - this.getAmount();
 	}
 
 }

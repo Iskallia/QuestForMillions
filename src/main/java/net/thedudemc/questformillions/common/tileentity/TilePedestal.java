@@ -27,11 +27,12 @@ import net.thedudemc.questformillions.common.util.Config;
 public class TilePedestal extends TileEntity implements ITickable {
 
 	String owningPlayer = "";
-	int currentIncrement = 0;
-
 	static final int SIZE = 1;
 	static final int MAX = 1000000;
 	static final float treasureRate = Config.pedestal_treasureRate;
+
+	int lootboxRate = Config.pedestal_lootboxRate;
+	int currentIncrement;
 
 	@Override
 	public boolean hasFastRenderer() {
@@ -122,7 +123,7 @@ public class TilePedestal extends TileEntity implements ITickable {
 					if (getOwner(player).getAmount() >= currentIncrement) {
 						EntityItem loot = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, LootHandler.getRandomLoot());
 						pedestal.world.spawnEntity(loot);
-						currentIncrement += 100;
+						currentIncrement += lootboxRate;
 					}
 					pedestal.markDirty();
 				}

@@ -11,10 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
@@ -23,13 +19,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
+import net.thedudemc.questformillions.common.json.JSONArray;
+import net.thedudemc.questformillions.common.json.JSONObject;
+import net.thedudemc.questformillions.common.json.JSONParser;
 
 public class LootHandler {
 
 	private JSONObject json;
 	private JSONParser parser = new JSONParser();
 
-	public static List<ItemStack> shulkers = new ArrayList<ItemStack>();
 	public static HashMap<String, Loot> loot = new HashMap<String, Loot>();
 
 	public LootHandler() {
@@ -60,22 +58,31 @@ public class LootHandler {
 		if (!json.containsKey("loot")) {
 			return;
 		}
-		// loot
+		// loot object
 		JSONObject jsonLoot = (JSONObject) json.get("loot");
 
-		// Box
+		// Box object
 		for (Object o : jsonLoot.keySet()) {
+
 			String boxName = (String) o;
 			JSONObject box = (JSONObject) jsonLoot.get(boxName);
 			JSONArray items = (JSONArray) box.get("items");
+
 			List<ItemStack> boxItems = new ArrayList<ItemStack>();
-			// item
+
+			// item loop
 			for (int i = 0; i < items.size(); i++) {
 				JSONObject item = (JSONObject) items.get(i);
+
+				// get id, count, and meta
 				String itemId = (String) item.get("id");
 				int count = Math.toIntExact((long) item.get("count"));
 				int meta = Math.toIntExact((long) item.get("metadata"));
+
+				// create the stack
 				ItemStack stack = new ItemStack(Item.getByNameOrId(itemId), count, meta);
+
+				// if has enchants, enchant it
 				if (item.containsKey("enchants")) {
 					JSONArray enchantments = (JSONArray) item.get("enchants");
 					for (int j = 0; j < enchantments.size(); j++) {
@@ -85,16 +92,21 @@ public class LootHandler {
 						stack.addEnchantment(Enchantment.getEnchantmentByLocation(id), lvl);
 					}
 				}
+
 				boxItems.add(stack);
 			}
 
+			// create a list of itemstacks the size of shulker inventory.
 			NonNullList<ItemStack> list = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
+
+			// for every item found in the items list, add it to the nonnulllist.
 			int k = 0;
 			for (ItemStack stack : boxItems) {
 
 				list.set(k++, stack);
 			}
 
+			// add the shulker inventory to the list of loot.
 			loot.put(boxName, new Loot(list));
 
 		}
@@ -102,14 +114,21 @@ public class LootHandler {
 	}
 
 	private static ItemStack getPackedShulker(String boxName, NonNullList<ItemStack> list) {
+		// create shulker item
 		ItemStack shulker = new ItemStack(Item.getItemFromBlock(getRandomShulkerBox()));
-		NBTTagCompound blockEntityTag = new NBTTagCompound();
 
+		// create empty nbt data
+		NBTTagCompound blockEntityTag = new NBTTagCompound();
 		NBTTagCompound itemList = new NBTTagCompound();
 
+		// save all items in the passed list to nbt
 		ItemStackHelper.saveAllItems(itemList, list);
+
+		// set items list to blockentitytag (shulker's item nbt data)
 		blockEntityTag.setTag("BlockEntityTag", itemList);
 		shulker.setTagCompound(blockEntityTag);
+
+		// set shulker box name
 		shulker.setStackDisplayName(boxName);
 
 		return shulker;
@@ -120,21 +139,16 @@ public class LootHandler {
 		if (loot.size() == 0)
 			return ItemStack.EMPTY;
 
-		Random rand = new Random();
-		int index = rand.nextInt(loot.size());
-		if (index == loot.size())
-			index = 0;
-
+		// get a random inventory of loot by creating a list of the entries and
+		// shuffling them, then pull the first one
 		List<Map.Entry<String, Loot>> list = new ArrayList<Map.Entry<String, Loot>>(loot.entrySet());
 
 		Collections.shuffle(list);
-		for (Map.Entry<String, Loot> entry : list) {
+		String name = list.get(0).getKey();
+		Loot items = list.get(0).getValue();
 
-			ItemStack stack = getPackedShulker(entry.getKey(), entry.getValue().items);
-			return stack;
-		}
+		return getPackedShulker(name, items.items);
 
-		return ItemStack.EMPTY;
 	}
 
 	private static Block getRandomShulkerBox() {

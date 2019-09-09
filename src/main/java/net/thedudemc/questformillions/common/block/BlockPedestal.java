@@ -25,6 +25,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedudemc.questformillions.common.init.QFMBlocks;
+import net.thedudemc.questformillions.common.storage.million.IMillion;
+import net.thedudemc.questformillions.common.storage.million.MillionProvider;
 import net.thedudemc.questformillions.common.tileentity.TilePedestal;
 
 public class BlockPedestal extends Block {
@@ -86,6 +88,7 @@ public class BlockPedestal extends Block {
 			NBTTagCompound compound = new NBTTagCompound();
 			// compound.setInteger("totalItems", pedestal.getTotalItems());
 			compound.setString("owningPlayer", pedestal.getOwningPlayer());
+			compound.setInteger("currentIncrement", pedestal.getCurrentIncrement());
 			drop.setTagCompound(compound);
 
 			drops.add(drop);
@@ -101,11 +104,16 @@ public class BlockPedestal extends Block {
 
 	@Override
 	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+		if (player.isCreative()) {
+			IMillion cap = worldIn.getCapability(MillionProvider.MILLION_CAP, null);
+			cap.removePlayer(cap.getPlayer(player.getUniqueID()));
+		}
 		super.harvestBlock(worldIn, player, pos, state, te, stack);
 		worldIn.setBlockToAir(pos);
-		// IMillion cap = worldIn.getCapability(MillionProvider.MILLION_CAP, null);
-		// cap.removePlayer(cap.getPlayer(player.getUniqueID()));
-		// QuestForMillions.PACKET.sendToAll(new TotalItemsPacket(0));
+		if (worldIn.getTileEntity(pos) != null) {
+			System.out.println("Tile Entity exists.");
+			worldIn.removeTileEntity(pos);
+		}
 	}
 
 	@Override

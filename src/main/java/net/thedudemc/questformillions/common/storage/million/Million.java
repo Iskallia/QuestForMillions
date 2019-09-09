@@ -54,7 +54,10 @@ public class Million implements IMillion {
 
 	@Override
 	public void removePlayer(MillionPlayer player) {
-		players.remove(player);
+		if (players.contains(player)) {
+			System.out.println("Player exits");
+			players.remove(player);
+		}
 	}
 
 	@Override

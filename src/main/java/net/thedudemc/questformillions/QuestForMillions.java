@@ -44,10 +44,13 @@ public class QuestForMillions {
 		Config.init(configDirectory);
 		lootHandler.init(new File(configDirectory, "loot.json"));
 		PACKET.registerMessage(TotalItemsPacketHandler.class, TotalItemsPacket.class, 0, Side.CLIENT);
-		MinecraftForge.EVENT_BUS.register(new GuiRenderer());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		MinecraftForge.EVENT_BUS.register(new EventStorm());
 		CapabilityManager.INSTANCE.register(IMillion.class, new MillionsStorage(), Million::new);
+
+		if (event.getSide() == Side.CLIENT) {
+			MinecraftForge.EVENT_BUS.register(new GuiRenderer());
+		}
 
 	}
 
