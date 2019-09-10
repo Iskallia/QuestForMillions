@@ -32,7 +32,7 @@ public class TilePedestal extends TileEntity implements ITickable {
 	static final float treasureRate = Config.pedestal_treasureRate;
 
 	int lootboxRate = Config.pedestal_lootboxRate;
-	int currentIncrement;
+	int currentIncrement = 0;;
 
 	@Override
 	public boolean hasFastRenderer() {
@@ -118,12 +118,16 @@ public class TilePedestal extends TileEntity implements ITickable {
 					double d1 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
 					double d2 = (double) (world.rand.nextFloat() * 0.5F) + 0.25D;
 					int treasureAmount = (int) Math.round((double) stack.getCount() * treasureRate);
-					EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, new ItemStack(QFMItems.TREASURE, treasureAmount));
+					EntityItem treasure = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2,
+							new ItemStack(QFMItems.TREASURE, treasureAmount));
 					pedestal.world.spawnEntity(treasure);
-					if (getOwner(player).getAmount() >= currentIncrement) {
-						EntityItem loot = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2, LootHandler.getRandomLoot());
+
+					currentIncrement += stack.getCount();
+					if (currentIncrement >= lootboxRate) {
+						currentIncrement = currentIncrement % lootboxRate;
+						EntityItem loot = new EntityItem(pedestal.world, (double) pedestal.getPos().getX() + d0, (double) pedestal.getPos().getY() + 1 + d1, (double) pedestal.getPos().getZ() + d2,
+								LootHandler.getRandomLoot());
 						pedestal.world.spawnEntity(loot);
-						currentIncrement += lootboxRate;
 					}
 					pedestal.markDirty();
 				}

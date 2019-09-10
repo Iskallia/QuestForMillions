@@ -22,7 +22,6 @@ import net.thedudemc.questformillions.common.storage.million.IMillion;
 import net.thedudemc.questformillions.common.storage.million.MillionPlayer;
 import net.thedudemc.questformillions.common.storage.million.MillionProvider;
 import net.thedudemc.questformillions.common.tileentity.TilePedestal;
-import net.thedudemc.questformillions.common.util.Config;
 
 public class ItemPedestal extends ItemBlock {
 
@@ -79,7 +78,6 @@ public class ItemPedestal extends ItemBlock {
 				}
 			} else {
 				pedestal.setOwningPlayer(name);
-				pedestal.setCurrentIncrement((int) Config.pedestal_lootboxRate);
 
 			}
 			worldIn.notifyNeighborsOfStateChange(pos, QFMBlocks.PEDESTAL, true);
