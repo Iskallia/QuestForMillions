@@ -33,6 +33,10 @@ public class QFMClient {
 
 		ResourceLocation name = Items.DIAMOND.getRegistryName();
 		ModelLoader.setCustomModelResourceLocation(QFMItems.TOTEM_OF_RAIN, 0, new ModelResourceLocation(name, "inventory"));
+		ModelLoader.setCustomModelResourceLocation(QFMItems.DIAMOND_STICK, 0, new ModelResourceLocation(Items.STICK.getRegistryName(), "inventory"));
+		// ModelLoader.setCustomModelResourceLocation(QFMItems.DIAMOND_STICK, 0, new
+		// ModelResourceLocation(QFMItems.DIAMOND_STICK.getRegistryName(),
+		// "inventory"));
 	}
 
 	private static void registerItemModel(final Item item, final int meta, final String variant) {

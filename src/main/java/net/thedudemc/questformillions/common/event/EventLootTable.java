@@ -25,30 +25,35 @@ public class EventLootTable {
 				final LootPool pool2 = event.getTable().getPool("pool2");
 				if (pool2 != null) {
 					pool2.addEntry(new LootEntryItem(QFMItems.TOTEM_OF_RAIN, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:totem_of_rain"));
+					pool2.addEntry(new LootEntryItem(QFMItems.DIAMOND_STICK, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:diamond_stick"));
 				}
 			}
 			if (event.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT)) {
 				final LootPool pool2 = event.getTable().getPool("pool2");
 				if (pool2 != null) {
 					pool2.addEntry(new LootEntryItem(QFMItems.TOTEM_OF_RAIN, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:totem_of_rain"));
+					pool2.addEntry(new LootEntryItem(QFMItems.DIAMOND_STICK, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:diamond_stick"));
 				}
 			}
 			if (event.getName().equals(LootTableList.CHESTS_DESERT_PYRAMID)) {
 				final LootPool pool1 = event.getTable().getPool("pool1");
 				if (pool1 != null) {
 					pool1.addEntry(new LootEntryItem(QFMItems.TOTEM_OF_RAIN, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:totem_of_rain"));
+					pool1.addEntry(new LootEntryItem(QFMItems.DIAMOND_STICK, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:diamond_stick"));
 				}
 			}
 			if (event.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE)) {
 				final LootPool main = event.getTable().getPool("main");
 				if (main != null) {
 					main.addEntry(new LootEntryItem(QFMItems.TOTEM_OF_RAIN, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:totem_of_rain"));
+					main.addEntry(new LootEntryItem(QFMItems.DIAMOND_STICK, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:diamond_stick"));
 				}
 			}
 			if (event.getName().equals(LootTableList.CHESTS_STRONGHOLD_LIBRARY)) {
 				final LootPool main = event.getTable().getPool("main");
 				if (main != null) {
 					main.addEntry(new LootEntryItem(QFMItems.TOTEM_OF_RAIN, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:totem_of_rain"));
+					main.addEntry(new LootEntryItem(QFMItems.DIAMOND_STICK, weight, 0, new LootFunction[0], new LootCondition[0], "questformillions:diamond_stick"));
 				}
 			}
 		}
